@@ -4,16 +4,6 @@ This app helps users connect a joystick or RC controller, calibrate it once, and
 
 Current scope: the calibrator is built for fixed-wing aircraft pilot controls. It calibrates Roll, Pitch, Yaw, and Throttle, mapped to Aileron, Elevator, Rudder, and Throttle outputs.
 
-## Overview
-
-Open the latest overview document here:
-
-```matlab
-open("toolbox/docs/Overview.mlx")
-```
-
-The overview explains the recommended workflow and should be used instead of the older example-model-first workflow.
-
 ## Workflow
 
 ### 1. Install the toolbox
