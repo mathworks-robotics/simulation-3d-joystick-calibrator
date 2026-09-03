@@ -1,4 +1,4 @@
-# Pilot Input Calibrator App
+# Simulation 3D Joystick Calibrator 
 
 This app helps users connect a joystick or RC controller, calibrate it once, and reuse the calibrated pilot input in Simulink. The intended use includes open-loop flight simulation and pilot-in-the-loop simulation workflows where a human pilot drives the model through calibrated hardware inputs.
 
