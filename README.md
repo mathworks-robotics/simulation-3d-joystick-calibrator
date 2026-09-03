@@ -1,10 +1,10 @@
 # Simulation 3D Joystick Calibrator 
 
-This app helps users connect a joystick or RC controller, calibrate it once, and reuse the calibrated configuration in Simulink. The intended use includes open-loop simulation or human-in-the-loop simulation, where user  drives the model through calibrated hardware inputs, thorgh a  connected  joystick or RC controller via USB. 
+This app helps users connect a joystick or RC controller, calibrate it once, and reuse the calibrated configuration in Simulink. The intended use includes open-loop simulation or human-in-the-loop simulation, where the user drives the model through calibrated hardware inputs via a connected joystick or RC controller over USB. 
 
 Current scope: the calibrator is built for fixed-wing aircraft pilot controls. It calibrates Roll, Pitch, Yaw, and Throttle, mapped to Aileron, Elevator, Rudder, and Throttle outputs.
 
-Future Scope: This will be extended for controlling robots, automobiles, machines etc.
+Future Scope: This will be extended to control robots, automobiles, machines, etc.
 
 ## Workflow
 
