@@ -14,7 +14,7 @@ Simulation 3D Joystick Calibrator creates one reusable calibration for a USB
 joystick, RC controller, or flying stick. The app calibrates the physical
 Roll, Pitch, Yaw, and Throttle controls once. The same saved configuration can
 then drive the Fixed-Wing, Multirotor, or Helicopter input block supplied with
-the toolbox.
+the support package.
 
 The physical-axis calibration remains reusable across all three blocks.
 Editable output limits in the app are applied by the Fixed-Wing block, which
@@ -40,7 +40,7 @@ blocks intentionally retain normalized output contracts.
 
 ## Getting Started
 
-### 1. Install the Toolbox
+### 1. Install the support package
 
 1. Download `Simulation_3D_Joystick_Calibrator.mltbx`.
 2. Double-click the file or install it from the MATLAB Add-On Manager.
@@ -144,7 +144,7 @@ POV hats, and optional aircraft controls are outside this release.
 
 ## Documentation
 
-Open `Overview.mlx` from the installed toolbox documentation for the complete
+Open `Overview.mlx` from the installed support package documentation for the complete
 calibration and Simulink workflow.
 
 ## License
