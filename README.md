@@ -1,80 +1,170 @@
-# Simulation 3D Joystick Calibrator 
+# Simulation 3D Joystick Calibrator
 
-This app helps users connect a joystick or RC controller, calibrate it once, and reuse the calibrated configuration in Simulink. The intended use includes open-loop simulation or human-in-the-loop simulation, where the user drives the model through calibrated hardware inputs via a connected joystick or RC controller over USB. 
+<!-- Add the File Exchange URL before publication, then uncomment this badge. -->
+[![View Simulation 3D Joystick Calibrator on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](<FILE_EXCHANGE_URL>)
 
-Current scope: the calibrator is built for fixed-wing aircraft pilot controls. It calibrates Roll, Pitch, Yaw, and Throttle, mapped to Aileron, Elevator, Rudder, and Throttle outputs.
 
-Future Scope: This will be extended to control robots, automobiles, machines, etc.
+<!-- Add the File Exchange item ID before publication, then uncomment this badge.-->
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/fileexchange/v1?id=<FILE_EXCHANGE_ID>)
 
-## Workflow
 
-### 1. Install the toolbox
+## Overview
 
-Install the provided `.mltbx` file in MATLAB.
+Simulation 3D Joystick Calibrator creates one reusable calibration for a USB
+joystick, RC controller, or flying stick. The app calibrates the physical
+Roll, Pitch, Yaw, and Throttle controls once. The same saved configuration can
+then drive the Fixed-Wing, Multirotor, or Helicopter input block supplied with
+the toolbox.
 
-After installation:
+The physical-axis calibration remains reusable across all three blocks.
+Editable output limits in the app are applied by the Fixed-Wing block, which
+allows direct mapping to control-surface ranges. The Multirotor and Helicopter
+blocks intentionally retain normalized output contracts.
 
-- the app is available from the MATLAB Apps tab,
-- the `Simulation 3D Joystick Calibrator` Simulink library is available in the Library Browser,
-- the overview document is available as `Overview.mlx`.
+<!-- Snapshot placeholders:
+1. Add the app screenshot as ./images/CalibrationAppDashboard.png.
+2. Add the library screenshot as ./images/SimulinkBlockLibrary.png.
+Recommended width: approximately 900 px for each source image.
+-->
 
-[Add screenshot here: Toolbox installed and app visible in Apps tab]
+| Calibration dashboard | Simulink block library |
+| :-------------------: | :--------------------: |
+| _Snapshot placeholder: add the app dashboard showing both bar-chart previews._ | _Snapshot placeholder: add the library showing all three aircraft input blocks._ |
 
-### 2. Open the app
+## Key Features
 
-Launch the app from the Apps tab, or run:
+- One shared four-control calibration for all supported aircraft blocks
+- Live raw-channel and calibrated-output bar charts
+- Automatic rest-position, noise, channel, and travel-range capture
+- Per-control direction verification and reverse selection
+- Editable channel, raw range, deadband, reverse, and Fixed-Wing output limits
+- Configuration save and load using a versioned MAT-file schema
+- Support for controllers reporting between 4 and 64 analog axes
+- Fixed-Wing, Multirotor, and Helicopter Simulink output contracts
+- Dedicated mask artwork for each supplied library block
+- Hardware-free demonstration mode for development and verification
+
+## Getting Started
+
+### 1. Install the Toolbox
+
+1. Download `Simulation_3D_Joystick_Calibrator.mltbx`.
+2. Double-click the file or install it from the MATLAB Add-On Manager.
+3. Confirm that **Simulation 3D Joystick Calibrator** appears on the MATLAB
+   Apps tab.
+4. Confirm that **Simulation 3D Joystick Calibrator** appears in the Simulink
+   Library Browser.
+
+### 2. Launch the App
+
+Open the app from the MATLAB Apps tab or run:
 
 ```matlab
-PilotCalibrator
+Simulation3DJoystickCalibrator
 ```
 
-The app opens the main calibration window only. Use the `Overview` button when you want to open the overview/help content.
+### 3. Calibrate the Controller
 
-[Add screenshot here: Main app window]
+1. Connect the controller and select its runtime Device ID.
+2. Click **Connect**.
+3. Center Roll, Pitch, and Yaw, place Throttle at rest, and click
+   **Center & hold**.
+4. Sweep each requested control through its complete travel.
+5. Review the raw-channel and calibrated-output bar charts.
+6. Set **Reverse** where necessary and confirm each control.
+7. For Fixed-Wing use, edit **Output Min** and **Output Max** to match the
+   required control-surface and throttle ranges.
+8. Save the shared calibration MAT-file.
 
-### 3. Calibrate the controller
+During an incomplete calibration, an unswept control can temporarily retain
+the same channel as a control that was just identified. Both calibrated-output
+bars move in that state so the shared assignment is visible. Sweeping the
+remaining control excludes channels that are already calibrated, and saving
+still requires four unique channel assignments.
 
-Inside the app:
+<!-- Snapshot placeholder:
+Add ./images/CalibrationWorkflow.png showing the connected device, completed
+sweep steps, calibrated table, and active raw/normalized previews.
+-->
 
-1. connect the joystick or RC controller,
-2. capture center,
-3. sweep Roll, Pitch, Yaw, and Throttle,
-4. confirm the detected directions,
-5. save the calibration as a `.mat` file.
+> **Workflow snapshot placeholder:** Add a completed calibration view here.
 
-The saved `.mat` file includes the joystick ID, detected axis count, channel mapping, deadbands, neutral positions, and fixed-wing actuator limits.
-
-[Add screenshot here: Main app window during calibration]
-
-### 4. Test in a new Simulink model
-
-Create a new blank Simulink model and test the calibrated hardware path directly.
+### 4. Use the Calibration in Simulink
 
 1. Open the Simulink Library Browser.
-2. Find the `Pilot Input Calibration` library.
-3. Drag `Calibrated Pilot Input` into the new model.
-4. Attach Display blocks to the calibrated outputs.
-5. Double-click `Calibrated Pilot Input` and load the saved `.mat` configuration file.
-6. Click Apply or OK, then update the model.
-7. Run the model in simulation mode with the hardware connected.
-8. Move the controller and confirm the Display blocks show the expected Aileron, Elevator, Rudder, and Throttle responses.
+2. Locate **Simulation 3D Joystick Calibrator**.
+3. Add the block for the required aircraft type.
+4. Open the block mask and load the saved calibration file.
+5. Select the runtime joystick Device ID.
+6. Connect the output bus to the flight-control or vehicle model.
 
-[Add screenshot here: New Simulink model with Calibrated Pilot Input and Display blocks]
+You can also open the library from MATLAB:
 
-### 5. Use in your own simulation
+```matlab
+open_system("Simulation3DJoystickCalibratorLibrary")
+```
 
-After the new-model test passes, reuse the same `Calibrated Pilot Input` block and `.mat` configuration file in your flight simulation model.
+## Simulink Blocks
 
-This calibrated configuration can be used in pilot-in-the-loop simulation workflows. Keep the configuration file local to the model folder when possible. If the mask loads a file from another folder, it copies it beside the model; if the file is already local, it reuses the same file without creating a duplicate.
+| Block | Output bus elements | Intended use |
+| --- | --- | --- |
+| `Calibrated Fixed-Wing Input` | `Aileron`, `Elevator`, `Rudder`, `Throttle` | Uses the saved per-control Output Min and Output Max values |
+| `Calibrated Multirotor Input` | `RollCmd`, `PitchCmd`, `YawCmd`, `ThrottleCmd` | Normalized multirotor attitude or rate commands |
+| `Calibrated Helicopter Input` | `LateralCyclic`, `LongitudinalCyclic`, `Pedals`, `Collective` | Conventional helicopter pilot controls |
 
-[Add screenshot here: Library Browser and masked subsystem in a user model]
+<!-- Snapshot placeholder:
+Add ./images/ConfiguredSimulinkModel.png showing one calibrated input block
+connected to a representative controller or aircraft model.
+-->
 
-## Practical Use
+## Output Range Behavior
 
-The intended usage is:
+- The Fixed-Wing block uses the `outputMin` and `outputMax` values saved for
+  each control. Centered controls must include zero in their output range.
+- The default Fixed-Wing block ranges remain Aileron `[-15, 15]` degrees,
+  Elevator `[-25, 25]` degrees, Rudder `[-20, 20]` degrees, and Throttle
+  `[0, 1]`.
+- The Multirotor block always outputs RollCmd, PitchCmd, and YawCmd in
+  `[-1, 1]`, and ThrottleCmd in `[0, 1]`.
+- The Helicopter block always outputs LateralCyclic, LongitudinalCyclic, and
+  Pedals in `[-1, 1]`, and Collective in `[0, 1]`.
 
-- calibrate once,
-- save one configuration file per controller,
-- test the configuration in a new Simulink model with Display blocks,
-- reuse the same file in open-loop or pilot-in-the-loop fixed-wing simulations,
-- recalibrate only when the controller, joystick ID, channel assignment, or hardware axis behavior changes.
+
+## Controller Support
+
+- Controllers must expose at least four analog axes.
+- Up to 64 analog axes are supported.
+- Roll, Pitch, Yaw, and Throttle can use any four distinct channels.
+- Additional axes remain visible in the raw-channel preview.
+- Buttons and POV hats are not calibrated in this release.
+- The connected hardware and operating system must be supported by
+  `sim3d.io.Joystick`.
+
+## Current Scope
+
+Version 1.0 supplies Fixed-Wing, Multirotor, and Helicopter axis-input
+features. Ground vehicles, arbitrary customer-defined signal sets, buttons,
+POV hats, and optional aircraft controls are outside this release.
+
+## Requirements
+
+- MATLAB R2025b or later
+- Simulink
+- Simulink 3D Animation
+- A controller recognized by `sim3d.io.Joystick` for hardware operation
+
+## Documentation
+
+Open `Overview.mlx` from the installed toolbox documentation for the complete
+calibration and Simulink workflow.
+
+## License
+
+See [`license.txt`](./license.txt).
+
+## Support
+
+Use the repository issue tracker for questions, bug reports, and feature
+requests.
+
+Copyright 2026 The MathWorks, Inc.
