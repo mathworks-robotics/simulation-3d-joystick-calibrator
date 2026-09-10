@@ -21,15 +21,9 @@ Editable output limits in the app are applied by the Fixed-Wing block, which
 allows direct mapping to control-surface ranges. The Multirotor and Helicopter
 blocks intentionally retain normalized output contracts.
 
-<!-- Snapshot placeholders:
-1. Add the app screenshot as ./images/CalibrationAppDashboard.png.
-2. Add the library screenshot as ./images/SimulinkBlockLibrary.png.
-Recommended width: approximately 900 px for each source image.
--->
-
 | Calibration dashboard | Simulink block library |
 | :-------------------: | :--------------------: |
-| _Snapshot placeholder: add the app dashboard showing both bar-chart previews._ | _Snapshot placeholder: add the library showing all three aircraft input blocks._ |
+| ![Simulation 3D Joystick Calibrator dashboard](./Images/Calibration%20App.png) | ![Simulation 3D Joystick Calibrator block library](./Images/Sim3d%20Joystick%20Library.png) |
 
 ## Key Features
 
@@ -82,12 +76,7 @@ bars move in that state so the shared assignment is visible. Sweeping the
 remaining control excludes channels that are already calibrated, and saving
 still requires four unique channel assignments.
 
-<!-- Snapshot placeholder:
-Add ./images/CalibrationWorkflow.png showing the connected device, completed
-sweep steps, calibrated table, and active raw/normalized previews.
--->
 
-> **Workflow snapshot placeholder:** Add a completed calibration view here.
 
 ### 4. Use the Calibration in Simulink
 
@@ -121,8 +110,8 @@ connected to a representative controller or aircraft model.
 
 - The Fixed-Wing block uses the `outputMin` and `outputMax` values saved for
   each control. Centered controls must include zero in their output range.
-- The default Fixed-Wing block ranges remain Aileron `[-15, 15]` degrees,
-  Elevator `[-25, 25]` degrees, Rudder `[-20, 20]` degrees, and Throttle
+- The default Fixed-Wing block ranges remain Aileron `[-1, 1]` degrees,
+  Elevator `[-1, 1]` degrees, Rudder `[-1, 1]` degrees, and Throttle
   `[0, 1]`.
 - The Multirotor block always outputs RollCmd, PitchCmd, and YawCmd in
   `[-1, 1]`, and ThrottleCmd in `[0, 1]`.
