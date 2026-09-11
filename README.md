@@ -1,20 +1,12 @@
 # Simulation 3D Joystick Calibrator
 
-<!-- Add the File Exchange URL before publication, then uncomment this badge. -->
-[![View Simulation 3D Joystick Calibrator on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](<FILE_EXCHANGE_URL>)
-
-
-<!-- Add the File Exchange item ID before publication, then uncomment this badge.-->
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/fileexchange/v1?id=<FILE_EXCHANGE_ID>)
-
-
 ## Overview
 
 Simulation 3D Joystick Calibrator creates one reusable calibration for a USB
 joystick, RC controller, or flying stick. The app calibrates the physical
 Roll, Pitch, Yaw, and Throttle controls once. The same saved configuration can
 then drive the Fixed-Wing, Multirotor, or Helicopter input block supplied with
-the support package.
+the toolbox.
 
 The physical-axis calibration remains reusable across all three blocks.
 Editable output limits in the app are applied by the Fixed-Wing block, which
@@ -36,11 +28,10 @@ blocks intentionally retain normalized output contracts.
 - Support for controllers reporting between 4 and 64 analog axes
 - Fixed-Wing, Multirotor, and Helicopter Simulink output contracts
 - Dedicated mask artwork for each supplied library block
-- Hardware-free demonstration mode for development and verification
 
 ## Getting Started
 
-### 1. Install the support package
+### 1. Install the toolbox
 
 1. Download `Simulation_3D_Joystick_Calibrator.mltbx`.
 2. Double-click the file or install it from the MATLAB Add-On Manager.
@@ -49,9 +40,15 @@ blocks intentionally retain normalized output contracts.
 4. Confirm that **Simulation 3D Joystick Calibrator** appears in the Simulink
    Library Browser.
 
+The single `.mltbx` installs the app, MATLAB services, command-line entry
+point, documentation, and automatically registered Simulink library.
+
 ### 2. Launch the App
 
-Open the app from the MATLAB Apps tab or run:
+Open the app from the MATLAB Apps tab 
+
+![Simulation 3D Joystick Calibrator dashboard](./Images/AppTab.png)
+or run:
 
 ```matlab
 Simulation3DJoystickCalibrator
@@ -76,8 +73,6 @@ bars move in that state so the shared assignment is visible. Sweeping the
 remaining control excludes channels that are already calibrated, and saving
 still requires four unique channel assignments.
 
-
-
 ### 4. Use the Calibration in Simulink
 
 1. Open the Simulink Library Browser.
@@ -101,23 +96,17 @@ open_system("Simulation3DJoystickCalibratorLibrary")
 | `Calibrated Multirotor Input` | `RollCmd`, `PitchCmd`, `YawCmd`, `ThrottleCmd` | Normalized multirotor attitude or rate commands |
 | `Calibrated Helicopter Input` | `LateralCyclic`, `LongitudinalCyclic`, `Pedals`, `Collective` | Conventional helicopter pilot controls |
 
-<!-- Snapshot placeholder:
-Add ./images/ConfiguredSimulinkModel.png showing one calibrated input block
-connected to a representative controller or aircraft model.
--->
-
 ## Output Range Behavior
 
 - The Fixed-Wing block uses the `outputMin` and `outputMax` values saved for
   each control. Centered controls must include zero in their output range.
-- The default Fixed-Wing block ranges remain Aileron `[-1, 1]` degrees,
-  Elevator `[-1, 1]` degrees, Rudder `[-1, 1]` degrees, and Throttle
+- The default Fixed-Wing block ranges are Aileron `[-15, 15]` degrees,
+  Elevator `[-25, 25]` degrees, Rudder `[-20, 20]` degrees, and Throttle
   `[0, 1]`.
 - The Multirotor block always outputs RollCmd, PitchCmd, and YawCmd in
   `[-1, 1]`, and ThrottleCmd in `[0, 1]`.
 - The Helicopter block always outputs LateralCyclic, LongitudinalCyclic, and
   Pedals in `[-1, 1]`, and Collective in `[0, 1]`.
-
 
 ## Controller Support
 
@@ -144,8 +133,8 @@ POV hats, and optional aircraft controls are outside this release.
 
 ## Documentation
 
-Open `Overview.mlx` from the installed support package documentation for the complete
-calibration and Simulink workflow.
+Click **Overview** in the app for the complete installation, calibration, and
+Simulink workflow.
 
 ## License
 
