@@ -1,5 +1,7 @@
 # Simulation 3D Joystick Calibrator
 
+<!-- MATLAB Online badge intentionally disabled. -->
+
 ## Overview
 
 Simulation 3D Joystick Calibrator creates one reusable calibration for a USB
@@ -13,7 +15,7 @@ Editable output limits in the app are applied by the Fixed-Wing block, which
 allows direct mapping to control-surface ranges. The Multirotor and Helicopter
 blocks intentionally retain normalized output contracts.
 
-| Calibration dashboard | Simulink block library |
+| Calibration dashboard | Simulink&reg; block library |
 | :-------------------: | :--------------------: |
 | ![Simulation 3D Joystick Calibrator dashboard](./Images/Calibration%20App.png) | ![Simulation 3D Joystick Calibrator block library](./Images/Sim3d%20Joystick%20Library.png) |
 
@@ -34,7 +36,7 @@ blocks intentionally retain normalized output contracts.
 ### 1. Install the toolbox
 
 1. Download `Simulation_3D_Joystick_Calibrator.mltbx`.
-2. Double-click the file or install it from the MATLAB Add-On Manager.
+2. Double-click the file or install it from the MATLAB&reg; Add-On Manager.
 3. Confirm that **Simulation 3D Joystick Calibrator** appears on the MATLAB
    Apps tab.
 4. Confirm that **Simulation 3D Joystick Calibrator** appears in the Simulink
@@ -118,17 +120,11 @@ open_system("Simulation3DJoystickCalibratorLibrary")
 - The connected hardware and operating system must be supported by
   `sim3d.io.Joystick`.
 
-## Current Scope
-
-Version 1.0 supplies Fixed-Wing, Multirotor, and Helicopter axis-input
-features. Ground vehicles, arbitrary customer-defined signal sets, buttons,
-POV hats, and optional aircraft controls are outside this release.
-
 ## Requirements
 
 - MATLAB R2025b or later
 - Simulink
-- Simulink 3D Animation
+- Simulink 3D Animation&trade;
 - A controller recognized by `sim3d.io.Joystick` for hardware operation
 
 ## Documentation
