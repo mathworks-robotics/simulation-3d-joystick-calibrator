@@ -50,6 +50,7 @@ point, documentation, and automatically registered Simulink library.
 Open the app from the MATLAB Apps tab 
 
 ![Simulation 3D Joystick Calibrator dashboard](./Images/AppTab.png)
+
 or run:
 
 ```matlab
