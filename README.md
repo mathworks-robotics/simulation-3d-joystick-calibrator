@@ -105,7 +105,7 @@ open_system("Simulation3DJoystickCalibratorLibrary")
   each control. Centered controls must include zero in their output range.
 - The default Fixed-Wing block ranges are Aileron `[-15, 15]` degrees,
   Elevator `[-25, 25]` degrees, Rudder `[-20, 20]` degrees, and Throttle
-  `[0, 1]`.
+  `[0, 100]` percent.
 - The Multirotor block always outputs RollCmd, PitchCmd, and YawCmd in
   `[-1, 1]`, and ThrottleCmd in `[0, 1]`.
 - The Helicopter block always outputs LateralCyclic, LongitudinalCyclic, and

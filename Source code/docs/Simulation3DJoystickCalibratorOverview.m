@@ -43,7 +43,7 @@
 %[text] Each signal stores its assigned channel, raw minimum and maximum, neutral value, deadband, reverse flag, mapping type, and output range. The runtime Device ID is not saved.
 %%
 %[text] ## Simulink Blocks
-%[text] - **Calibrated Fixed-Wing Input** uses the saved Output Min and Output Max values. Its defaults are Aileron \[-15, 15\] degrees, Elevator \[-25, 25\] degrees, Rudder \[-20, 20\] degrees, and Throttle \[0, 1\].
+%[text] - **Calibrated Fixed-Wing Input** uses the saved Output Min and Output Max values. Its defaults are Aileron \[-15, 15\] degrees, Elevator \[-25, 25\] degrees, Rudder \[-20, 20\] degrees, and Throttle \[0, 100\] percent.
 %[text] - **Calibrated Multirotor Input** outputs RollCmd, PitchCmd, and YawCmd in \[-1, 1\], with ThrottleCmd in \[0, 1\].
 %[text] - **Calibrated Helicopter Input** outputs LateralCyclic, LongitudinalCyclic, and Pedals in \[-1, 1\], with Collective in \[0, 1\]. \
 %%
