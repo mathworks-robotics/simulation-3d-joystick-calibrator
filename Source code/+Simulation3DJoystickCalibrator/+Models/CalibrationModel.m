@@ -154,7 +154,19 @@ classdef CalibrationModel < handle
             else
                 signal.neutral = signal.rawMin;
             end
-            signal.neutral = min(max(signal.neutral, signal.rawMin), signal.rawMax);
+            if strcmp(signal.mapping, 'centered')
+                sideTravel = [signal.neutral - signal.rawMin, ...
+                    signal.rawMax - signal.neutral];
+                if any(sideTravel <= max(signal.deadband, 0.03))
+                    error('Simulation3DJoystickCalibrator:IncompleteSweep', ...
+                        ['%s needs travel on both sides of center beyond the ' ...
+                         'deadband. Sweep to both full limits and try again.'], ...
+                        signal.label);
+                end
+            else
+                signal.neutral = min(max(signal.neutral, ...
+                    signal.rawMin), signal.rawMax);
+            end
 
             signals = obj.Signals;
             signals(signalIndex) = signal;
@@ -349,19 +361,15 @@ classdef CalibrationModel < handle
 
             signal = signals(signalIndex);
             signal.channel = channel;
-            observed = samples(:, channel);
             if channel <= numel(obj.RestMedian) && ...
                     isfinite(obj.RestMedian(channel))
-                observed(end + 1, 1) = obj.RestMedian(channel);
                 signal.neutral = obj.RestMedian(channel);
                 signal.deadband = max(signal.deadband, ...
                     min(0.2, 3 * obj.RestNoise(channel)));
             end
-            signal.rawMin = min(observed);
-            signal.rawMax = max(observed);
-            if signal.rawMin >= signal.rawMax
-                return;
-            end
+            % Keep the configured range until capture finishes. Scaling by
+            % the running extrema makes every new extreme look like full
+            % travel, even when the control has only just left center.
             if strcmp(signal.mapping, 'centered')
                 signal.neutral = min(max(signal.neutral, ...
                     signal.rawMin), signal.rawMax);

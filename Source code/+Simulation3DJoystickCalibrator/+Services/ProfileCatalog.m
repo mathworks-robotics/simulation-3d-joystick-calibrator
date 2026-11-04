@@ -6,7 +6,7 @@ classdef ProfileCatalog
     properties (Constant)
         SchemaVersion = 2
         ProfileVersion = 1
-        AppVersion = '1.0'
+        AppVersion = '1.1.1'
         CalibrationProfileID = 'simulation-3d-joystick'
     end
 

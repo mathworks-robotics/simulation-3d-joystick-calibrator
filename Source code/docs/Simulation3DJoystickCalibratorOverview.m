@@ -63,7 +63,7 @@
 %[text] Recalibrate when the physical controller, assigned channels, measured travel, center behavior, deadband, direction, or Fixed-Wing output limits change. Changing the aircraft-specific block or runtime Device ID does not require a new physical-axis calibration.
 %%
 %[text] ## Scope
-%[text] Version 1.0 supports Fixed-Wing, Multirotor, and Helicopter axis inputs. Ground vehicles, arbitrary customer-defined signals, buttons, POV hats, and optional controls are outside this release.
+%[text] Version 1.1.1 supports Fixed-Wing, Multirotor, and Helicopter axis inputs. Ground vehicles, arbitrary customer-defined signals, buttons, POV hats, and optional controls are outside this release.
 % Copyright 2026 The MathWorks, Inc.
 
 %[appendix]{"version":"1.0"}

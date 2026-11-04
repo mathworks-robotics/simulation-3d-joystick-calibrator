@@ -1,0 +1,30 @@
+{
+    "name": "Simulation_3D_Joystick_Calibrator",
+    "version": "1.1.1",
+    "id": "74dd23d7-9807-dad4-54e6-8bb941f4e439",
+    "formerNames": [],
+    "displayName": "Simulation 3D Joystick Calibrator",
+    "summary": "Calibrate joystick controls once and reuse them across aircraft input blocks.",
+    "tags": [],
+    "readme": "",
+    "provider": {
+        "name": "",
+        "organization": "The MathWorks, Inc.",
+        "email": "",
+        "url": ""
+    },
+    "folders": [
+        { "path": "apps", "languages": ["matlab"] },
+        { "path": "docs", "languages": ["matlab"] },
+        { "path": "library", "languages": ["matlab"] },
+        { "path": "supporting_functions", "languages": ["matlab"] }
+    ],
+    "dependencies": [],
+    "releaseCompatibility": ">=25.2.*",
+    "supportedPlatforms": [
+        { "platform": "windows", "architectures": ["any"] },
+        { "platform": "linux", "architectures": ["any"] },
+        { "platform": "macos", "architectures": ["any"] }
+    ],
+    "schemaVersion": "1.2.0"
+}

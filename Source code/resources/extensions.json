@@ -1,0 +1,30 @@
+{
+    "mw": {
+        "addons": {
+            "identifier": "74dd23d7-9807-dad4-54e6-8bb941f4e439",
+            "previewImage": "../images/Joystick-2.png",
+            "gettingStarted": {
+                "file": "../docs/Simulation3DJoystickCalibratorOverview.m"
+            }
+        },
+        "desktop": {
+            "apps": {
+                "my_apps": {
+                    "items": [
+                        {
+                            "name": "e0103cd8-d4b9-44c5-882e-a384c6eaba51:Simulation3DJoystickCalibratorDesignerApp.mlapp",
+                            "type": "GalleryItem",
+                            "action": {
+                                "type": "Action",
+                                "text": "Simulation 3D Joystick Calibrator",
+                                "description": "Calibrate Simulation 3D joystick inputs for supported aircraft blocks.",
+                                "icon": "../images/Joystick-2-AppIcon-24.png",
+                                "callback": "Simulation3DJoystickCalibratorDesignerApp"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

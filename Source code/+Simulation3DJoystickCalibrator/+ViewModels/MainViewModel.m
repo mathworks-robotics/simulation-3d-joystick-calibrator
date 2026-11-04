@@ -416,9 +416,13 @@ classdef MainViewModel < handle
                     'Center Roll, Pitch, and Yaw; place Throttle at rest; hold still.';
             else
                 obj.Adapter.beginSignalCapture(signalIndex);
-                prompt = sprintf( ...
-                    'Move only %s through its full travel.', ...
-                    obj.SignalNames(signalIndex));
+                if strcmp(obj.Model.Signals(signalIndex).mapping, 'centered')
+                    prompt = sprintf( ...
+                        'Move only %s from center to BOTH full limits and back.', ...
+                        obj.SignalNames(signalIndex));
+                else
+                    prompt = 'Move Throttle from minimum to maximum and back.';
+                end
             end
 
             obj.stopPreview();
